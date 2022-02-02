@@ -1,7 +1,8 @@
 import Bot from "./classes/Bot";
 import { config } from "dotenv";
 import Rest from "./classes/Rest";
-
+import Commands from "./commands";
+import commands from "./commands";
 config();
 
 const init = () => {
@@ -16,6 +17,7 @@ const init = () => {
   const bot = new Bot(process.env.TOKEN);
   const rest = new Rest(process.env.TOKEN, process.env.CLIENT_ID);
   rest.start();
+  rest.registerCommands(commands);
   bot.start();
 };
 init();
